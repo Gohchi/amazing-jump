@@ -1,0 +1,7 @@
+*.log
+.vscode/
+dist/
+node_modules/
+notes/
+nw/build/
+nw/cache/
