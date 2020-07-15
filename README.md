@@ -1,3 +1,3 @@
-# Devious Valley --end is my first game in Phaser 3
+# Amazing jump
 
-More info soon...
+Make your best jump to keep yourself alive.
