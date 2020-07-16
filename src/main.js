@@ -22,19 +22,19 @@ const arcade = {
 const matter = {
   default: 'matter',
   matter: {
-      // debug: true
-  }
+      debug: true
+  },
 };
 
 const gameConfig = Object.assign(config, {
   scene: [
-    MainMenu,
     Game2Scene,
+    MainMenu,
     GameScene,
     BootScene,
     LoadGameScene
   ], //SplashScene, GameOverScene 
-  pixelArt: false,
+  pixelArt: true,
   input: {
       gamepad: true
   },

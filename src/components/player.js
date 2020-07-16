@@ -8,7 +8,7 @@ export default class Player {
     this.createPlayerAnimations( scene );
     this.cursors = scene.input.keyboard.createCursorKeys();
     this.group = scene.matter.world.nextGroup();
-    this.sprite = scene.add.sprite(800, 400, 'dude', 4);
+    this.sprite = scene.add.sprite(300, 1150, 'dude', 4);
     this.shapes = scene.cache.json.get('dude-shapes');
     this.gameObject = scene.matter.add
       .gameObject(this.sprite, { shape: this.shapes.dude4, restitution: .9 })
@@ -44,7 +44,7 @@ export default class Player {
       player.anims.play('right', true);
       this.recoverAnimation();
     } else {
-      player.setVelocityX(0);
+      // player.setVelocityX(0);
 
       player.anims.play('turn');
     }
@@ -73,6 +73,11 @@ export default class Player {
   }
   addKeyEvents( scene ) {
     this.onDash = false;
+    scene.input.keyboard.addKey('S')
+      .on('down', e => {
+        this.gameObject.setVelocityY(-25);
+        this.gameObject.setVelocityX(10);
+      });
     scene.input.keyboard.addKey('D')
       .on('down', e => {
         if(this.onDash) return;

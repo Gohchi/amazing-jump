@@ -11,20 +11,20 @@ export default class Background {
     
     
     this.bg00 = scene.add.tileSprite(0, 0, 
-      scene.sys.game.config.width,
-      scene.sys.game.config.height, 
-      'bg00'
+      scene.sys.game.config.maxWidth,
+      scene.sys.game.config.maxHeight, 
+      'bg02'
     ).setOrigin(0)
-    .setTint(this.tint0, this.tint0, this.tint1, this.tint1);
+    // .setTint(this.tint0, this.tint0, this.tint1, this.tint1);
 
-    this.bg01 = scene.add.tileSprite(0, 0, 
-      scene.sys.game.config.width,
-      scene.sys.game.config.height, 
-      'bg01'
-    ).setOrigin(0)
-    .setTint(this.tint2, this.tint2, this.tint2, this.tint2);
+    // this.bg01 = scene.add.tileSprite(0, 0, 
+    //   scene.sys.game.config.width,
+    //   scene.sys.game.config.height, 
+    //   'bg01'
+    // ).setOrigin(0)
+    // .setTint(this.tint2, this.tint2, this.tint2, this.tint2);
     
-    this.bg01.alpha = 0.4;
+    // this.bg01.alpha = 0.4;
 
     this.tweens = scene.tweens.addCounter({
       from: 1,
@@ -38,16 +38,19 @@ export default class Background {
   static prepare( scene ){
     scene.load.image('bg00', 'assets/bg/stressed.png');
     scene.load.image('bg01', 'assets/bg/blocks01.png');
+    scene.load.image('bg02', 'assets/bg/stars.png');
   }
-  update(){
-    let bg01 = this.bg01, tween = this.tweens;
-    bg01.tilePositionX = Math.cos(this.iter) * 100;
-    bg01.tilePositionY = Math.sin(this.iter) * 100;
+  update( player ){
+    // let bg01 = this.bg01, tween = this.tweens;
+    // bg01.tilePositionX = Math.cos(this.iter) * 100;
+    // bg01.tilePositionY = Math.sin(this.iter) * 100;
 
-    bg01.tileScaleX = tween.getValue();
-    bg01.tileScaleY = tween.getValue();
-    bg01.flipX = !bg01.flipX;
-    bg01.flipY = !bg01.flipY;
+    // bg01.tileScaleX = tween.getValue();
+    // bg01.tileScaleY = tween.getValue();
+    // bg01.flipX = !bg01.flipX;
+    // bg01.flipY = !bg01.flipY;
+
+    this.bg00.tilePositionY -= -(player.gameObject.body.velocity.y) / 10;
 
     this.iter += 0.01;
   }
