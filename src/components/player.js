@@ -10,8 +10,9 @@ export default class Player {
     this.group = scene.matter.world.nextGroup();
     this.sprite = scene.add.sprite(300, 1150, 'dude', 4);
     this.shapes = scene.cache.json.get('dude-shapes');
+    this.sprite.setScale(3);
     this.gameObject = scene.matter.add
-      .gameObject(this.sprite, { shape: this.shapes.dude4, restitution: .9 })
+      .gameObject(this.sprite, { shape: this.shapes.dude1, restitution: .9 })
       .setFrictionAir(0.001)
       .setBounce(0.5)
       .setCollisionGroup(this.group);
@@ -22,8 +23,8 @@ export default class Player {
     });
   }
   static prepare( scene ){
-    scene.load.spritesheet('dude', 'assets/dude.png', { frameWidth: 32, frameHeight: 48 });
-    scene.load.json('dude-shapes', 'assets/dude-pe.json');
+    scene.load.spritesheet('dude', 'assets/player.png', { frameWidth: 32, frameHeight: 32 });
+    scene.load.json('dude-shapes', 'assets/player-pe.json');
   }
   update(){
     if(this.playerOnGround)
